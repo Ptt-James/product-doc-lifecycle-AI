@@ -3,7 +3,7 @@
 > **产品开发全过程文件管理** Skill for WorkBuddy  
 > 根据项目复杂度和阶段，自动决定"该建什么文档、放哪里、什么时候更新"，避免过度文档化。
 
-[![Version](https://img.shields.io/badge/version-v3.1.0-blue)](https://github.com/your-repo/product-doc-lifecycle) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v3.1.0-blue)](https://github.com/Ptt-James/product-doc-lifecycle-AI) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Install](https://img.shields.io/badge/install-one--click-brightgreen)](#installation)
 
 ---
 
@@ -23,17 +23,86 @@
 
 ## 安装
 
-### 方式一：复制到 WorkBuddy（本地安装）
+<details>
+<summary>📦 一键安装（推荐）</summary>
+
+**Linux / macOS:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ptt-James/product-doc-lifecycle-AI/main/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+iwr -useb https://raw.githubusercontent.com/Ptt-James/product-doc-lifecycle-AI/main/install.ps1 | iex
+```
+
+</details>
+
+### 方式一：从 GitHub 克隆并安装
+
+#### Linux / macOS
 
 ```bash
-# 把 product-doc-lifecycle/ 文件夹复制到 WorkBuddy skills 目录
-cp -r product-doc-lifecycle ~/.workbuddy/skills/
+# 1. 克隆仓库
+git clone https://github.com/Ptt-James/product-doc-lifecycle-AI.git
+cd product-doc-lifecycle-AI
+
+# 2. 复制 Skill 到 CodeBuddy skills 目录
+cp -r product-doc-lifecycle ~/.codebuddy/skills/
+
+# 3. 清理（可选）
+cd ..
+rm -rf product-doc-lifecycle-AI
 ```
 
-### 方式二：Skill Hub 一键安装（待发布）
+#### Windows (PowerShell)
 
+```powershell
+# 1. 克隆仓库
+git clone https://github.com/Ptt-James/product-doc-lifecycle-AI.git
+cd product-doc-lifecycle-AI
+
+# 2. 复制 Skill 到 CodeBuddy skills 目录
+Copy-Item -Recurse product-doc-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
+
+# 3. 清理（可选）
+cd ..
+Remove-Item -Recurse -Force product-doc-lifecycle-AI
 ```
-/workbuddy install product-doc-lifecycle
+
+### 方式二：手动下载
+
+1. 访问 [GitHub Releases](https://github.com/Ptt-James/product-doc-lifecycle-AI/releases)
+2. 下载最新版本的 `product-doc-lifecycle.zip`
+3. 解压到 `~/.codebuddy/skills/` 目录（macOS/Linux）或 `%USERPROFILE%\.codebuddy\skills\`（Windows）
+
+### 方式三：复制现有 Skill
+
+如果你已经在本地有 `product-doc-lifecycle` 文件夹：
+
+```bash
+# Linux / macOS
+cp -r product-doc-lifecycle ~/.codebuddy/skills/
+
+# Windows PowerShell
+Copy-Item -Recurse product-doc-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
+```
+
+### 验证安装
+
+安装后，在 CodeBuddy 中对 AI 说：
+> "列出可用的 skills"
+
+你应该能看到 `product-doc-lifecycle` 在列表中。
+
+### 卸载
+
+```bash
+# Linux / macOS
+rm -rf ~/.codebuddy/skills/product-doc-lifecycle
+
+# Windows PowerShell
+Remove-Item -Recurse -Force "$env:USERPROFILE\.codebuddy\skills\product-doc-lifecycle"
 ```
 
 ---
@@ -116,12 +185,26 @@ Skill 会自动评估，也可以手动对照：
 
 ---
 
-## 发布到 Skill Hub
+## 贡献与反馈
 
-1. Fork 本仓库
-2. 确保 `product-doc-lifecycle/SKILL.md` 的 `description` 字段完整
-3. 提交 PR 到 Skill Hub 仓库
-4. 或联系维护者上传
+欢迎贡献！你可以：
+
+1. **报告 Bug**：在 [Issues](https://github.com/Ptt-James/product-doc-lifecycle-AI/issues) 提交问题
+2. **提出建议**：在 [Discussions](https://github.com/Ptt-James/product-doc-lifecycle-AI/discussions) 分享想法
+3. **提交 PR**：Fork 仓库，修改后提交 Pull Request
+
+## 团队
+
+- **黄益群（益群）** - 项目负责人
+- **陈黄琳娜**
+- **李雪艳**
+
+## 相关链接
+
+- 📖 [完整文档（中文）](产品文档全过程管理技能.md)
+- 📖 [完整文档（英文）](Product-Doc-Lifecycle%20Project%20Description%20Document.md)
+- 🐛 [问题反馈](https://github.com/Ptt-James/product-doc-lifecycle-AI/issues)
+- 💬 [讨论区](https://github.com/Ptt-James/product-doc-lifecycle-AI/discussions)
 
 ---
 
