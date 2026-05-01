@@ -7,7 +7,7 @@
 | **作品名称** | Product-Doc-Lifecycle —— AI驱动的产品文档全生命周期管理Skill |
 | **参赛赛道** | AI Agent / 开发者工具 / 企业效能 |
 | **团队名称** | 个人开发者 |
-| **团队成员** | 黄益群（益群）|
+| **团队成员** | 黄益群（益群）| 陈黄琳娜 | 李雪艳   |
 | **提交日期** | 2026年4月 |
 | **代码仓库** | https://github.com/Ptt-James/product-doc-lifecycle-AI
 
