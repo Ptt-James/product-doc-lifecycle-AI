@@ -1,9 +1,9 @@
 # product-doc-lifecycle
 
-> **产品开发全过程文件管理** Skill for WorkBuddy  
+> **产品开发全过程文件管理** Skill for CodeBuddy
 > 根据项目复杂度和阶段，自动决定"该建什么文档、放哪里、什么时候更新"，避免过度文档化。
 
-[![Version](https://img.shields.io/badge/version-v3.1.0-blue)](https://github.com/Ptt-James/product-doc-lifecycle-AI) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Install](https://img.shields.io/badge/install-one--click-brightgreen)](#installation)
+[![Version](https://img.shields.io/badge/version-v3.1.0-blue)](https://github.com/Ptt-James/product-doc-lifecycle-AI/releases/tag/v3.1.0) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Install](https://img.shields.io/badge/install-one--click-brightgreen)](#installation) [![GitHub stars](https://img.shields.io/github/stars/Ptt-James/product-doc-lifecycle-AI?style=social)](https://github.com/Ptt-James/product-doc-lifecycle-AI/stargazers)
 
 ---
 
