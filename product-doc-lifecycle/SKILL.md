@@ -1,5 +1,5 @@
 ---
-name: documentation-lifecycle
+name: product-doc-lifecycle
 description: >
   产品开发文档体系管理。根据用户意图触发：建立文档体系、初始化文档结构、
   检查文档完整性、询问"该写什么文档/文档放哪里/什么时候更新文档"。

@@ -1,4 +1,4 @@
-# 文档规范详解 — documentation-lifecycle v3.1
+# 文档规范详解 — product-doc-lifecycle v3.1
 
 > SKILL.md 的规范详解，专注于各文档的**内容边界、检查清单、版本同步规则**。
 

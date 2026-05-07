@@ -1,4 +1,4 @@
-# 文档模板集 — documentation-lifecycle v3.1
+# 文档模板集 — product-doc-lifecycle v3.1
 
 > 复制对应模板到目标路径，替换 `{占位符}` 后使用。
 > 内容边界与规范说明见 `references/doc-spec.md`。
