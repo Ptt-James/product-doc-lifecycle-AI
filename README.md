@@ -1,4 +1,4 @@
-# product-doc-lifecycle
+# documentation-lifecycle
 
 > **产品开发全过程文件管理** Skill for CodeBuddy
 > 根据项目复杂度和阶段，自动决定"该建什么文档、放哪里、什么时候更新"，避免过度文档化。
@@ -48,7 +48,7 @@ git clone https://github.com/Ptt-James/product-doc-lifecycle-AI.git
 cd product-doc-lifecycle-AI
 
 # 2. 复制 Skill 到 CodeBuddy skills 目录
-cp -r product-doc-lifecycle ~/.codebuddy/skills/
+cp -r documentation-lifecycle ~/.codebuddy/skills/
 
 # 3. 清理（可选）
 cd ..
@@ -63,7 +63,7 @@ git clone https://github.com/Ptt-James/product-doc-lifecycle-AI.git
 cd product-doc-lifecycle-AI
 
 # 2. 复制 Skill 到 CodeBuddy skills 目录
-Copy-Item -Recurse product-doc-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
+Copy-Item -Recurse documentation-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
 
 # 3. 清理（可选）
 cd ..
@@ -73,19 +73,19 @@ Remove-Item -Recurse -Force product-doc-lifecycle-AI
 ### 方式二：手动下载
 
 1. 访问 [GitHub Releases](https://github.com/Ptt-James/product-doc-lifecycle-AI/releases)
-2. 下载最新版本的 `product-doc-lifecycle.zip`
+2. 下载最新版本的 `documentation-lifecycle.zip`
 3. 解压到 `~/.codebuddy/skills/` 目录（macOS/Linux）或 `%USERPROFILE%\.codebuddy\skills\`（Windows）
 
 ### 方式三：复制现有 Skill
 
-如果你已经在本地有 `product-doc-lifecycle` 文件夹：
+如果你已经在本地有 `documentation-lifecycle` 文件夹：
 
 ```bash
 # Linux / macOS
-cp -r product-doc-lifecycle ~/.codebuddy/skills/
+cp -r documentation-lifecycle ~/.codebuddy/skills/
 
 # Windows PowerShell
-Copy-Item -Recurse product-doc-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
+Copy-Item -Recurse documentation-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
 ```
 
 ### 验证安装
@@ -93,16 +93,16 @@ Copy-Item -Recurse product-doc-lifecycle "$env:USERPROFILE\.codebuddy\skills\"
 安装后，在 CodeBuddy 中对 AI 说：
 > "列出可用的 skills"
 
-你应该能看到 `product-doc-lifecycle` 在列表中。
+你应该能看到 `documentation-lifecycle` 在列表中。
 
 ### 卸载
 
 ```bash
 # Linux / macOS
-rm -rf ~/.codebuddy/skills/product-doc-lifecycle
+rm -rf ~/.codebuddy/skills/documentation-lifecycle
 
 # Windows PowerShell
-Remove-Item -Recurse -Force "$env:USERPROFILE\.codebuddy\skills\product-doc-lifecycle"
+Remove-Item -Recurse -Force "$env:USERPROFILE\.codebuddy\skills\documentation-lifecycle"
 ```
 
 ---
@@ -123,7 +123,7 @@ Remove-Item -Recurse -Force "$env:USERPROFILE\.codebuddy\skills\product-doc-life
 ## Skill 包含什么
 
 ```
-product-doc-lifecycle/
+documentation-lifecycle/
 ├── SKILL.md              ← 核心规则（决策树、复杂度分级、触发时机）
 └── references/
     ├── doc-spec.md      ← 各文档详细规范（内容边界、检查清单）

@@ -1,6 +1,6 @@
 # Changelog
 
-本文件记录 **product-doc-lifecycle Skill** 本身的版本变更。
+本文件记录 **documentation-lifecycle Skill** 本身的版本变更。
 
 格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/)
 

@@ -28,7 +28,7 @@ if [ ! -d "product-doc-lifecycle-AI" ]; then
 fi
 
 echo "📦 Installing Skill..."
-cp -r product-doc-lifecycle-AI/product-doc-lifecycle "$SKILLS_DIR/"
+cp -r product-doc-lifecycle-AI/documentation-lifecycle "$SKILLS_DIR/"
 
 # 清理临时目录
 cd /
@@ -37,7 +37,7 @@ rm -rf "$TEMP_DIR"
 echo ""
 echo "✅ Installation complete!"
 echo ""
-echo "Skill location: $SKILLS_DIR/product-doc-lifecycle"
+echo "Skill location: $SKILLS_DIR/documentation-lifecycle"
 echo ""
 echo "To verify installation, ask AI in CodeBuddy:"
 echo '  "List available skills"'

@@ -31,7 +31,7 @@ try {
 }
 
 Write-Host "📦 Installing Skill..." -ForegroundColor Cyan
-Copy-Item -Recurse -Force "product-doc-lifecycle-AI\product-doc-lifecycle" "$skillsDir\"
+Copy-Item -Recurse -Force "product-doc-lifecycle-AI\documentation-lifecycle" "$skillsDir\"
 
 # 清理临时目录
 Set-Location $HOME
@@ -40,7 +40,7 @@ Remove-Item -Recurse -Force $tempDir -ErrorAction SilentlyContinue
 Write-Host ""
 Write-Host "✅ Installation complete!" -ForegroundColor Green
 Write-Host ""
-Write-Host "Skill location: $skillsDir\product-doc-lifecycle" -ForegroundColor Cyan
+Write-Host "Skill location: $skillsDir\documentation-lifecycle" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "To verify installation, ask AI in CodeBuddy:" -ForegroundColor Cyan
 Write-Host '  "List available skills"' -ForegroundColor White

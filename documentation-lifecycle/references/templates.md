@@ -1,14 +1,12 @@
-# 文档模板集 — product-doc-lifecycle v3.1
+# 文档模板集 — documentation-lifecycle v3.1
 
-## 使用说明
+> 复制对应模板到目标路径，替换 `{占位符}` 后使用。
+> 内容边界与规范说明见 `references/doc-spec.md`。
 
-复制对应模板到目标路径，替换 `{占位符}` 后使用。
-
-**命名规范（v2.1）**：所有文档文件名使用 kebab-case，无例外。
-- 核心文档：`{序号}-{英文名}.md`（如 `01-requirements.md`），文件名固定，不含版本号
-- 子项目文档：`{子项目ID}-{序号}-{英文名}.md`（如 `admin-01-requirements.md`），文件名固定，不含版本号
-- API 规范：`docs/api/openapi.yaml`（机器可读 OpenAPI 规范）
-- **版本号在文件内容头部维护**，不体现在文件名中
+**命名规范**：
+- 核心文档：`{序号}-{英文名}.md`（如 `01-requirements.md`），无版本号
+- 子项目文档：`{子项目ID}-{序号}-{英文名}.md`（如 `admin-01-requirements.md`），无版本号
+- 版本号在**文件内容头部**维护
 
 ---
 
@@ -65,7 +63,7 @@
 | 5 | [功能指南](docs/core/05-feature-guide.md) | 使用说明 |
 | 6 | [部署手册](docs/core/06-deployment.md) | 部署与运维 |
 | 7 | [版本说明](docs/core/07-release-notes.md) | 发布历史 |
-| 8 | [使用说明](docs/core/08-user-guide.md) | 用户使用手册（如有终端用户） |
+| 8 | [使用说明](docs/core/08-user-guide.md) | 用户使用手册（有终端用户时建） |
 
 ## 版本历史
 
@@ -134,19 +132,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 
 | # | 文档名称 | 版本 | 路径 | 状态 |
 |---|---------|------|------|------|
-| 1 | 功能需求 | V{ver} | [链接]({subproject}/{subproject}-01-requirements.md) | 开发中 |
+| 1 | 功能需求     | V{ver} | [链接]({subproject}/{subproject}-01-requirements.md) | 开发中 |
 | 2 | 功能架构设计 | V{ver} | [链接]({subproject}/{subproject}-02-architecture.md) | 开发中 |
-| 3 | 数据模型 | V{ver} | [链接]({subproject}/{subproject}-03-data-model.md) | 开发中 |
-| 4 | API 文档 | V{ver} | [链接]({subproject}/{subproject}-04-api.md) | 开发中 |
-| 5 | 功能指南 | V{ver} | [链接]({subproject}/{subproject}-05-feature-guide.md) | - |
-| 6 | UI/交互设计 | V{ver} | [链接]({subproject}/{subproject}-06-ui-design.md) | - |
-| 7 | 部署说明 | V{ver} | [链接]({subproject}/{subproject}-07-deployment.md) | - |
-
-## 部署专题
-
-| # | 文档名称 | 版本 | 路径 |
-|---|---------|------|------|
-| - | （待添加） | - | - |
+| 3 | 数据模型     | V{ver} | [链接]({subproject}/{subproject}-03-data-model.md) | 开发中 |
+| 4 | API 文档     | V{ver} | [链接]({subproject}/{subproject}-04-api.md) | 开发中 |
+| 5 | 功能指南     | V{ver} | [链接]({subproject}/{subproject}-05-feature-guide.md) | - |
+| 6 | UI/交互设计  | V{ver} | [链接]({subproject}/{subproject}-06-ui-design.md) | - |
+| 7 | 部署说明     | V{ver} | [链接]({subproject}/{subproject}-07-deployment.md) | - |
 
 ## 归档子项目
 
@@ -171,7 +163,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 | 后端开发 | README → 02-architecture → 04-api → 03-database |
 | 前端开发 | README → 04-api → 05-feature-guide → 子项目文档 |
 | QA       | README → 01-requirements → 04-api → 05-feature-guide |
-| DevOps   | 06-deployment → 02-architecture → 部署专题 |
+| DevOps   | 06-deployment → 02-architecture |
 | AI Agent | README → 02-architecture → 04-api → 03-database（按需其他） |
 ```
 
@@ -233,6 +225,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 **最后更新**: {日期} | **状态**: {草稿/评审中/已冻结} | **负责人**: {姓名}
 ```
 
+---
+
+### 02-architecture 模板
+
 ```markdown
 # 系统架构设计
 
@@ -269,8 +265,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 
 ## 5. 数据流
 
-{描述请求如何流经各服务}
-
 ```
 客户端 → API 网关 → 业务服务 → 数据库
 ```
@@ -285,6 +279,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 
 **最后更新**: {日期} | **负责人**: {姓名}
 ```
+
+---
 
 ### 03-database 模板
 
@@ -338,6 +334,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 **最后更新**: {日期}
 ```
 
+---
+
 ### 04-api 模板
 
 ```markdown
@@ -350,6 +348,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) + Conventional Commits
 - Base URL: `{环境 URL}`
 - 认证方式: Bearer Token (JWT)
 - Content-Type: application/json
+- OpenAPI 规范: [openapi.yaml](../api/openapi.yaml)
 
 ## 2. 通用响应格式
 
@@ -406,6 +405,8 @@ Content-Type: application/json
 **最后更新**: {日期}
 ```
 
+---
+
 ### 05-feature-guide 模板
 
 ```markdown
@@ -445,6 +446,8 @@ A: {解答}
 
 **最后更新**: {日期}
 ```
+
+---
 
 ### 06-deployment 模板
 
@@ -530,6 +533,8 @@ curl {health-check-url}
 **最后更新**: {日期}
 ```
 
+---
+
 ### 07-release-notes 模板
 
 ```markdown
@@ -546,12 +551,10 @@ curl {health-check-url}
 ## 新增功能
 
 - {功能 1 描述}
-- {功能 2 描述}
 
 ## Bug 修复
 
 - {修复 1 描述}
-- {修复 2 描述}
 
 ## 变更说明
 
@@ -578,10 +581,7 @@ curl {health-check-url}
 ### 08-user-guide 模板
 
 > **文件名**: `docs/core/08-user-guide.md`
->
 > **适用**: 有终端用户的产品（Web UI / 移动端 / 桌面端）
->
-> **不适用的项目**: 纯 API 服务、库/框架（用 README + 04-api 代替）
 
 ```markdown
 # {产品名} 使用说明
@@ -600,7 +600,7 @@ curl {health-check-url}
 
 1. {步骤 1：访问地址 / 下载安装}
 2. {步骤 2：登录 / 注册}
-3. {步骤 3：完成第一个操作，如"创建第一条记录"}
+3. {步骤 3：完成第一个操作}
 
 ## 3. 功能使用说明
 
@@ -609,9 +609,9 @@ curl {health-check-url}
 **用途**：{用户用这个功能能完成什么}
 
 **操作步骤**：
-1. {步骤 1：找到入口}
-2. {步骤 2：填写必要信息}
-3. {步骤 3：点击确认，查看结果}
+1. {步骤 1}
+2. {步骤 2}
+3. {步骤 3}
 
 **小提示**：{技巧或注意事项}
 
@@ -624,13 +624,10 @@ curl {health-check-url}
 **Q: {用户常问问题}**
 A: {用用户语言回答，不用技术术语}
 
-**Q: {另一个问题}**
-A: {回答}
-
 ## 5. 联系我们
 
 - 反馈问题：{邮箱 / 工单系统 / 应用内反馈入口}
-- 查看版本更新：[{产品名} 更新日志]({链接到 07-release-notes 或更新公告})
+- 查看版本更新：[{产品名} 更新日志]({链接到 07-release-notes})
 
 ---
 
@@ -667,7 +664,6 @@ A: {回答}
 
 **验收标准**：
 - [ ] {可测试条件}
-- [ ] {可测试条件}
 
 ### 2.2 {模块名}
 
@@ -686,10 +682,9 @@ A: {回答}
 |--------------|------|------|
 | {服务名} | [核心 04-api](../core/04-api.md) | {用途} |
 
-## 5. Out of Scope（本子项目不负责的）
+## 5. Out of Scope
 
 - {不在范围内的功能 1}
-- {不在范围内的功能 2}
 
 ---
 
@@ -732,16 +727,20 @@ A: {回答}
 
 | 依赖服务 | 调用方式 | 用途 |
 |---------|---------|------|
-| API Gateway (:8007) | HTTP REST | 数据读写 |
+| API Gateway | HTTP REST | 数据读写 |
 
 ## 6. 设计决策记录（ADR）
 
 | 决策 | 方案 | 原因 |
 |------|------|------|
 | {决策} | {方案} | {原因} |
+
+---
+
+**最后更新**: {日期} | **版本**: V{ver}
 ```
 
-**前端子项目补充章节**：
+**前端子项目补充**：
 
 ```markdown
 ## 7. 路由结构
@@ -761,7 +760,7 @@ A: {回答}
 （核心页面组件层级）
 ```
 
-**后端/微服务子项目补充章节**：
+**后端/微服务子项目补充**：
 
 ```markdown
 ## 7. 服务内部分层
@@ -779,15 +778,9 @@ A: {回答}
 | {事件} | {服务} | {服务} | {说明} |
 ```
 
-```markdown
 ---
 
-**最后更新**: {日期} | **版本**: V{ver}
-```
-
----
-
-### 子项目数据模型模板（后端/数据库类）
+### 子项目数据模型模板（后端）
 
 ```markdown
 # {子项目名} 数据模型
@@ -802,18 +795,12 @@ A: {回答}
 
 ### {table_name}
 
-**说明**：{表的用途}
-
 | 字段 | 类型 | 约束 | 默认值 | 说明 |
 |------|------|------|--------|------|
 | id | BIGINT | PK, AUTO_INCREMENT | - | 主键 |
 | {field} | {type} | {约束} | {默认值} | {说明} |
 | created_at | DATETIME | NOT NULL | CURRENT_TIMESTAMP | 创建时间 |
 | updated_at | DATETIME | NOT NULL | CURRENT_TIMESTAMP ON UPDATE | 更新时间 |
-
-### {table_name}
-
-...
 
 ## 3. 与核心表的关系
 
@@ -851,20 +838,15 @@ A: {回答}
 
 | Store 文件 | 职责 | 持久化 | 初始状态 |
 |-----------|------|--------|---------|
-| `{name}.store.ts` | {职责} | {localStorage/sessionStorage/否} | {描述} |
+| `{name}.store.ts` | {职责} | {localStorage/否} | {描述} |
 
 ## 2. 核心类型定义
 
 ```typescript
-// types/{module}.ts
-
 export interface {TypeName} {
   id: number
-  // ...
 }
 ```
-
-### {TypeName}
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
@@ -897,12 +879,6 @@ interface {StoreName}State {
 |------|---------|---------|---------|
 | {数据} | {localStorage/key} | {策略} | {时机} |
 
-## 5. 数据流向
-
-```
-用户操作 → Component → Store Action → API 请求 → Store State → Component 响应式更新
-```
-
 ---
 
 **最后更新**: {日期} | **版本**: V{ver}
@@ -910,7 +886,7 @@ interface {StoreName}State {
 
 ---
 
-### 子项目 API 文档模板（后端/微服务 — 对外暴露接口）
+### 子项目 API 文档模板（后端 — 对外暴露接口）
 
 ```markdown
 # {子项目名} API 文档
@@ -921,7 +897,6 @@ interface {StoreName}State {
 
 - Base URL: `{路由前缀}`
 - 认证: 同全局规范，参见 [核心 04-api](../core/04-api.md)
-- Content-Type: application/json
 
 ## 2. 通用响应格式
 
@@ -935,24 +910,14 @@ interface {StoreName}State {
 
 **描述**：{接口说明}
 
-**请求头**：
-```
-Authorization: Bearer {token}
-```
-
 **请求体**：
 ```json
-{
-  "field": "type"
-}
+{ "field": "type" }
 ```
 
 **响应**：
 ```json
-{
-  "code": 200,
-  "data": {}
-}
+{ "code": 200, "data": {} }
 ```
 
 ## 4. 子项目专属错误码
@@ -988,15 +953,11 @@ src/api/
 - Base URL: 通过环境变量 `{变量名}` 注入
 - Token 注入: 请求拦截器自动附加 Authorization 头
 - 超时设置: {N}ms
-- 错误拦截:
-  - 401 → 跳转登录页
-  - 403 → 提示无权限
-  - 500 → 全局 toast 提示
+- 错误拦截: 401 → 跳转登录页 / 403 → 提示无权限 / 500 → 全局 toast
 
 ## 3. API 封装示例
 
 ```typescript
-// src/api/{module}.ts
 import request from '@/utils/request'
 
 export function getList(params: { page: number; size: number }) {
@@ -1052,8 +1013,6 @@ export function getList(params: { page: number; size: number }) {
 
 ### 2.2 操作步骤
 
-**场景：{场景名}**
-
 1. {步骤 1}
 2. {步骤 2}
 3. {步骤 3}
@@ -1064,19 +1023,7 @@ export function getList(params: { page: number; size: number }) {
 |--------|------|--------|------|
 | {配置} | {位置} | {值} | {说明} |
 
-### 2.4 注意事项
-
-- {注意 1}
-- {注意 2}
-
-## 3. 其他功能模块
-
-（按相同结构依次列出）
-
-## 4. 常见问题（FAQ）
-
-**Q: {问题}**
-A: {解答}
+## 3. 常见问题（FAQ）
 
 **Q: {问题}**
 A: {解答}
@@ -1110,7 +1057,6 @@ A: {解答}
 │        │                            │
 │ 侧边栏  │       主内容区             │
 │        │                            │
-│        │                            │
 └────────┴────────────────────────────┘
 ```
 
@@ -1118,35 +1064,12 @@ A: {解答}
 
 ### 3.1 {页面名}
 
-**路由**：`/{path}`
-**权限**：{角色要求}
-
-**页面布局**：
-
-```
-┌──────────────────────┐
-│    页面标题 + 操作栏    │
-├──────────────────────┤
-│                      │
-│    筛选条件区          │
-│                      │
-├──────────────────────┤
-│                      │
-│    数据表格 / 卡片     │
-│                      │
-├──────────────────────┤
-│    分页器             │
-└──────────────────────┘
-```
+**路由**：`/{path}` | **权限**：{角色要求}
 
 **关键交互**：
 | 交互 | 触发 | 行为 |
 |------|------|------|
 | {交互名} | {触发条件} | {行为描述} |
-
-### 3.2 {页面名}
-
-...
 
 ## 4. 表单校验规则
 
@@ -1168,9 +1091,7 @@ A: {解答}
 | 规范 | 来源 |
 |------|------|
 | 色彩 | {设计系统/链接} |
-| 字体 | {设计系统/链接} |
 | 组件库 | {如 Ant Design / Element Plus} |
-| 图标 | {图标库} |
 
 ---
 
@@ -1195,44 +1116,25 @@ A: {解答}
 
 | 项目 | 最低要求 | 推荐配置 |
 |------|---------|---------|
-| OS | {系统} | {系统} |
 | 内存 | {N} GB | {N} GB |
 | 磁盘 | {N} GB | {N} GB |
 
 ## 3. 构建步骤
 
 ```bash
-# 1. 安装依赖
 {安装命令}
-
-# 2. 构建
 {构建命令}
-
-# 3. 产物目录
-{产物路径}
 ```
 
 ## 4. 子项目专属配置
-
-### 环境变量
 
 | 变量名 | 必填 | 默认值 | 说明 |
 |--------|------|--------|------|
 | {变量} | 是 | {值} | {说明} |
 
-### 配置文件
-
-| 文件 | 说明 |
-|------|------|
-| {文件路径} | {说明} |
-
 ## 5. 部署步骤
 
 ```bash
-# 1. {步骤}
-{命令}
-
-# 2. {步骤}
 {命令}
 ```
 
@@ -1240,11 +1142,6 @@ A: {解答}
 
 ```bash
 curl {health-check-url}
-```
-
-**预期响应**：
-```json
-{ "status": "ok" }
 ```
 
 ## 7. 与核心服务的依赖
@@ -1298,7 +1195,6 @@ paths:
       tags:
         - "{模块名}"
       summary: "{接口摘要}"
-      description: "{接口详细描述}"
       operationId: "get{Resource}List"
       parameters:
         - name: "page"
@@ -1324,13 +1220,10 @@ paths:
                     example: 200
                   message:
                     type: string
-                    example: "success"
                   data:
                     type: object
         "401":
           $ref: "#/components/responses/Unauthorized"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
 
 components:
   securitySchemes:
@@ -1342,12 +1235,6 @@ components:
   responses:
     Unauthorized:
       description: "未认证"
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/ErrorResponse"
-    InternalServerError:
-      description: "服务器内部错误"
       content:
         application/json:
           schema:
