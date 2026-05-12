@@ -17,228 +17,113 @@
 
 ### 2.1 One-Liner Summary
 
-Product-Doc-Lifecycle is a Skill designed for AI Agent (WorkBuddy) that can automatically determine "what documentation to create, where to place it, and when to update it" based on project complexity and current development stage, thoroughly solving the pain points of missing or over-documented software projects.
+AI-driven Skill that automatically manages the full lifecycle of product documentation—deciding what to build, where to store it, and when to update it based on project scale.
 
-### 2.2 Project Positioning
+### 2.2 Core Value
 
-This project is an **AI Agent Skill Plugin** that runs within WorkBuddy AI Assistant, providing intelligent documentation management systems for software development teams.
-
-### 2.3 Core Value
-
-- 🎯 **On-Demand Documentation**: Automatically matches documentation sets based on project complexity (simple/medium/complex), rejecting one-size-fits-all approaches
-- 📅 **Phased Progression**: Establishes documentation progressively by development stages (S0-S6), preventing "creating many empty documents early that no one maintains"
-- 🤖 **AI-Driven**: Natural language triggering, developers just say "help me initialize documentation system", AI automatically completes assessment and execution
-- 📋 **Built-in Standards**: Built-in documentation standards, templates, and checklists to ensure documentation quality
+- 🎯 **On-Demand**: Matches documentation sets to project complexity (Simple/Medium/Complex).
+- 📅 **Phased**: Progressively establishes docs (S0-S6), avoiding early "empty document" rot.
+- 🤖 **AI-Driven**: Natural language triggering within WorkBuddy AI Agent.
+- 📋 **Standardized**: Built-in templates, checklists, and delivery plans (v3.2+).
 
 ---
 
-## 3. Problem Background and Requirements Analysis
+## 3. Problem & Solution
 
-### 3.1 Pain Points Description
+### 3.1 The Pain
+- **Missing Docs**: High maintenance/handoff costs.
+- **Over-Documentation**: Heavy burden for small projects.
+- **Stale Content**: Docs disconnected from code updates.
 
-Documentation management has always been a challenge in software development:
-
-| Problem | Specific Manifestation | Consequence |
-|---------|---------------------|-------------|
-| **Missing Documentation** | Cannot find architecture diagrams or API docs upon project delivery | Difficult handoff, high maintenance costs |
-| **Over-Documentation** | Small projects adopt large company standards, creating dozens of documents | Heavy maintenance burden, documentation rot |
-| **Wrong Timing** | Create all documents early, no one updates them later | Documentation disconnected from code |
-| **No Standard Specifications** | Different documentation styles per person, uneven quality | Poor readability, hindered team collaboration |
-
-### 3.2 Target Users
-
-- Software development teams (1-20 people)
-- Individual developers using AI Agent for assisted development
-- Open source project maintainers needing standardized documentation management
-
-### 3.3 Market Demand
-
-With the popularity of AI programming assistants, developers increasingly rely on AI for code and documentation management. However, existing AI tools lack **understanding of project context** and cannot intelligently determine documentation scope. This project fills this gap.
+### 3.2 Our Solution
+A decision engine that assesses **Complexity** and **Stage** to generate a structured Markdown documentation set.
 
 ---
 
 ## 4. Technical Solution
 
-### 4.1 Overall Architecture
-
+### 4.1 Architecture
 ```
-User (Natural Language)
-    ↓
-WorkBuddy AI Agent
-    ↓
-product-doc-lifecycle Skill
-    ├── Complexity Assessment Engine (automatically assesses project scale)
-    ├── Stage Judgment Engine (identifies current development stage)
-    ├── Documentation Decision Engine (decision tree: what docs to create)
-    └── Documentation Generation Engine (automatically generates based on templates)
-    ↓
-Output: Structured Documentation Set (Markdown format)
+User → WorkBuddy Agent → product-doc-lifecycle Skill
+    ├── Assessment Engine (Scale & Complexity)
+    ├── Stage Judgment (S0-S6)
+    ├── Decision Tree (Selection)
+    └── Generation Engine (Templates)
 ```
 
 ### 4.2 Core Modules
 
-#### Module 1: Complexity Assessment Engine
+#### Stage Judgment Engine (v3.2)
 
-Assesses project complexity through three dimensions:
+| Stage | Trigger | Docs Created |
+|-------|---------|--------------|
+| **S0 Init** | Repo created | README + CHANGELOG + **DELIVERY-PLAN** |
+| **S1 Req** | Req approved | +01-requirements |
+| **S2 Arch** | Tech plan set | +02-architecture |
+| **S3 API** | API draft done | +04-api |
+| **S4 Dev** | Feature done | +05-feature-guide |
+| **S5 Deploy** | 1st Deploy | +06-deployment + 08-user-guide |
+| **S6 Release** | 1st Release | +07-release-notes |
 
-| Dimension | Simple | Medium | Complex |
-|-----------|--------|--------|---------|
-| Team Size | 1-3 people | 3-8 people | 8+ people |
-| Architecture Form | Single App | Frontend-Backend Separation | Microservices/Multi-repo |
-| Project Cycle | <3 months | 3-12 months | >12 months |
-
-**Scoring Rules**: Total 0-3 → Simple, 4-7 → Medium, 8-12 → Complex
-
-#### Module 2: Stage Judgment Engine
-
-| Stage | Trigger Condition | Create Documentation |
-|-------|------------------|---------------------|
-| S0 Initialization | Repository created | README + CHANGELOG |
-| S1 Requirements | Requirements review approved | +01-requirements |
-| S2 Architecture | Technical solution determined | +02-architecture |
-| S3 API | First API draft completed | +04-api |
-| S4 Development | First feature completed | +05-feature-guide |
-| S5 Deployment | First deployment | +06-deployment +08-user-guide |
-| S6 Release | First release | +07-release-notes |
-
-#### Module 3: Documentation Decision Tree
-
-```
-Project Complexity?
-├── Simple (1-3 people) → 4 core documents
-├── Medium (3-8 people) → 7 documents
-└── Complex (8+ people) → Complete 8 documents + subproject documents
-```
-
-#### Module 4: Documentation Generation Engine
-
-Automatically generates Markdown documents that comply with specifications based on built-in templates (templates.md), including:
-- Fixed format header (project name, version, update date)
-- Standardized chapter structure
-- Checklist
-
-### 4.3 Technical Implementation
-
-| Technical Point | Implementation Method |
-|----------------|---------------------|
-| Skill Definition | SKILL.md (YAML frontmatter + Markdown instructions) |
-| Document Templates | references/templates.md (complete copy-paste templates) |
-| Documentation Specifications | references/doc-spec.md (content boundaries, quality requirements) |
-| Trigger Mechanism | Natural language matching ("help me initialize documentation system") |
-| Output Format | Markdown files, compatible with Git version control |
+#### Decision Tree
+- **Simple**: 5 core docs (README, CHANGELOG, DELIVERY-PLAN, 01, 04)
+- **Medium**: 8 docs
+- **Complex**: Complete set + subproject docs
 
 ---
 
-## 5. Core Feature List
-
-| # | Feature | Description | Status |
-|---|---------|-------------|--------|
-| 1 | Automatic Complexity Assessment | Analyzes project characteristics, automatically determines complexity level | ✅ Completed |
-| 2 | Documentation System Initialization | Creates minimum necessary document set based on complexity | ✅ Completed |
-| 3 | Documentation Completeness Check | Reports missing documents by comparing to current stage | ✅ Completed |
-| 4 | Subproject Documentation Management | Generates independent documentation for subprojects in microservices architecture | ✅ Completed |
-| 5 | Document Template Generation | One-click generation of specification-compliant document framework | ✅ Completed |
-| 6 | Stage Progression Reminders | Prompts next documentation tasks based on development progress | 🔄 Planned |
+## 5. Feature Highlights
+1. **Auto-Assessment**: Analyzes project to determine scale.
+2. **System Init**: Creates minimum necessary docs.
+3. **Integrity Check**: Reports missing docs based on stage.
+4. **Subproject Support**: Independent docs for microservices.
+5. **Template Gen**: One-click standardized frameworks.
 
 ---
 
-## 6. Innovation Points
-
-### 6.1 Core Innovation
-
-> **Transforming the process of "documentation decision" which originally relied on human experience into an executable AI Skill**
-
-1. **Dynamic Documentation Strategy**: First to propose "adjusting documentation scope dynamically based on complexity and stage", breaking "one-size-fits-all" documentation standards
-2. **AI-Native Design**: Specifically designed for AI Agent, triggered by natural language rather than traditional command-line tools
-3. **Anti-Rot Mechanism**: Establishes documentation progressively, ensuring each document has actual content support when created
-
-### 6.2 Comparison with Existing Solutions
-
-| Comparison Dimension | Traditional Documentation Tools (Notion/Confluence) | Static Documentation Templates (README Templates) | **This Project** |
-|---------------------|---------------------------------------------------|-----------------------------------------------|----------------|
-| Intelligent Decision | ❌ Manual selection | ❌ Fixed templates | ✅ AI automatic decision |
-| Dynamic Adjustment | ❌ Not supported | ❌ Not supported | ✅ Progressive by stage |
-| Project Adaptation | ❌ One-size-fits-all | ❌ No adaptation | ✅ Adapted by complexity |
-| Maintenance Reminders | ⚠️ Manual setup required | ❌ None | ✅ AI proactive reminders |
+## 6. Innovation
+- **Dynamic Strategy**: Moves from static templates to executable AI logic.
+- **AI-Native**: Built for natural language interaction.
+- **Anti-Rot**: Document-code synchronization requirements.
 
 ---
 
-## 7. Application Scenarios
+## 7. Usage
 
-### Scenario 1: Startup Project Quick Launch
+### 7.1 Quick Start
+Just ask the AI:
+- *"Help me initialize documentation system"*
+- *"Check documentation completeness"*
+- *"Create subproject documentation"*
 
-**User**: Independent developer, starting new side project
-**Problem**: Don't know which documents to create, too many to maintain, too few leads to regret later
-**Solution**: Tell AI "help me initialize documentation system", AI automatically assesses as "simple project", creates 4 core documents
-
-### Scenario 2: Team Collaboration Standardization
-
-**User**: 5-person startup team, moving out of early stage
-**Problem**: Team members have different documentation styles, new members don't know where documents are
-**Solution**: AI assesses as "medium complexity", creates 7 standardized documents and generates unified templates
-
-### Scenario 3: Microservices Architecture Management
-
-**User**: Large enterprise project, 20+ microservices
-**Problem**: Each service's documentation operates independently, lacks unified standards
-**Solution**: AI assesses as "complex project", creates complete documentation set + generates independent documents for each sub-service
-
----
-
-## 8. Usage Instructions
-
-### 8.1 Installation Methods
-
-**Method 1: Local Installation**
-```bash
-# Copy product-doc-lifecycle/ to WorkBuddy skills directory
-cp -r product-doc-lifecycle ~/.workbuddy/skills/
-```
-
-**Method 2: Skill Hub Installation (To be released)**
-```
-/workbuddy install product-doc-lifecycle
-```
-
-### 8.2 Quick Start
-
-After installation, just speak to AI:
-
-| What You Say | What AI Does |
-|-------------|--------------|
-| "Help me initialize documentation system" | Assesses complexity, creates minimum necessary document set |
-| "Check documentation completeness" | Reports missing documents by comparing to current stage |
-| "What documentation should this project have?" | Provides recommendations based on complexity and stage |
-| "Create subproject documentation" | Generates independent document set for subproject |
-
-### 8.3 Documentation Output Example
-
-After executing "help me initialize documentation system", project directory structure:
-
+### 7.2 Output Example
 ```
 your-project/
-├── README.md              ← Auto-generated
-├── CHANGELOG.md          ← Auto-generated
+├── README.md
+├── CHANGELOG.md
+├── DELIVERY-PLAN.md       ← New in v3.2
 ├── docs/
-│   ├── 01-requirements.md   ← Requirements specification (as needed)
-│   ├── 02-architecture.md   ← System architecture (medium and above)
-│   ├── 04-api.md            ← API interface documentation (always)
-│   └── 08-user-guide.md     ← User guide (medium and above)
+│   ├── 01-requirements.md
+│   ├── 04-api.md
+│   └── ...
 ```
+
+
 
 ---
 
-## 9. Project File Structure
+## 8. Project Structure
 
 ```
 product-doc-lifecycle/
-├── SKILL.md              ← Core rules (decision tree, complexity grading, trigger timing)
-├── README.md             ← Project description (this file)
+├── SKILL.md              ← Core rules (decision tree, triggers)
+├── README.md             ← Project description
 ├── CHANGELOG.md          ← Version change log
 └── references/
-    ├── doc-spec.md      ← Detailed specifications for each document (content boundaries, checklists)
-    └── templates.md     ← Complete templates for all documents (copy-paste ready)
+    ├── doc-spec.md      ← Documentation specifications
+    └── templates.md     ← Templates for all documents
 ```
+
 
 ---
 
@@ -246,10 +131,11 @@ product-doc-lifecycle/
 
 | Version | Planned Features | Estimated Time |
 |---------|----------------|----------------|
-| v3.2 | Support more documentation formats (Notion/Tencent Docs export) | 2026 Q2 |
-| v3.3 | Documentation quality scoring system (automatic detection of documentation rot) | 2026 Q3 |
-| v3.4 | CI/CD integration (automatically update documentation on deployment) | 2026 Q4 |
-| v4.0 | Multi-language support (English/Japanese documentation templates) | 2027 Q1 |
+| v3.2 | **Integrated Delivery Plan support** | **2026 Q2** |
+| v3.3 | Documentation quality scoring system | 2026 Q3 |
+| v3.4 | CI/CD integration | 2026 Q4 |
+| v4.0 | Multi-language support | 2027 Q1 |
+
 
 ---
 
